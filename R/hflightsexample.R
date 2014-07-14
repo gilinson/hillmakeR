@@ -1,5 +1,6 @@
-# # hillmakeR example using "hflights" data package
-# library(hflights)
+# # # hillmakeR example using "hflights" data package
+ require(hflights)
+ require(plyr)
 # # *** Data cleanup and formating ***
 # # Add leading 0's to arrival times
 # hflights$ArrTime <- sprintf("%04d", hflights$ArrTime)
@@ -17,7 +18,6 @@
 # 
 # # *** hillmakeR example ***
 # # Run hillmakeR occupancy pattern over data
-# library(hillmakeR)
 # library(plyr)
 # planeCount <- occupancyPatternFunc.processdata(startTimes=Arrivals, stopTimes=Departures, resolution="min", fillup=0.95)
 # planeCount$hour <- as.POSIXlt(planeCount$timeSequence)$hour
@@ -34,7 +34,7 @@
 # byHourOfWeek[which(byHourOfWeek$wday == 5), "DayName"] <- "Friday"
 # byHourOfWeek[which(byHourOfWeek$wday == 6), "DayName"] <- "Saturday"
 # 
-# ggplot(byHourOfWeek, aes(hour, median,colour=DayName)) + 
+# #ggplot(byHourOfWeek, aes(hour, median,colour=DayName)) + 
 #   geom_line(aes(group = DayName)) + 
 #   geom_point()
 # 
@@ -44,8 +44,8 @@
 # planeCountbyCarrier <- ddply(inFrame, "hflights.UniqueCarrier", function(x) occupancyPatternFunc.processdata(startTimes=x$Arrivals, stopTimes=x$Departures, resolution="min", fillup=0.95))
 # planeCountbyCarrier$hour <- as.POSIXlt(planeCountbyCarrier$timeSequence)$hour
 # planeCountbyCarrier$wday <- as.POSIXlt(planeCountbyCarrier$timeSequence)$wday
-# 
-# byHourOfWeekAndCarrier <- ddply(planeCountbyCarrier, c("hflights.UniqueCarrier","wday", "hour"), function(x) c(mean = mean(x$census), median = median(x$census), q90 = quantile(x$census, 0.9)))
-# byHourOfWeekAndCarrier$wdayhour <- paste(byHourOfWeekAndCarrier$wday, byHourOfWeekAndCarrier$hour)
-# ggplot(byHourOfWeekAndCarrier, aes(wdayhour, median,colour=hflights.UniqueCarrier)) + 
-#   geom_line(aes(group = hflights.UniqueCarrier), size =2)
+# # 
+# # byHourOfWeekAndCarrier <- ddply(planeCountbyCarrier, c("hflights.UniqueCarrier","wday", "hour"), function(x) c(mean = mean(x$census), median = median(x$census), q90 = quantile(x$census, 0.9)))
+# # byHourOfWeekAndCarrier$wdayhour <- paste(byHourOfWeekAndCarrier$wday, byHourOfWeekAndCarrier$hour)
+# # ggplot(byHourOfWeekAndCarrier, aes(wdayhour, median,colour=hflights.UniqueCarrier)) + 
+# #   geom_line(aes(group = hflights.UniqueCarrier), size =2)
