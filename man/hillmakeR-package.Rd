@@ -12,25 +12,20 @@ Conduct arrival, departure and occupancy analysis
 \tabular{ll}{
 Package: \tab hillmakeR\cr
 Type: \tab Package\cr
-Version: \tab 0.1 \cr
-Date: \tab 2013-06-06\cr
+Version: \tab 0.2 \cr
+Date: \tab 2014-07-014\cr
 License: \tab MIT \cr
 }
-~~ An overview of how to use the package, including the ~~
-~~ most important functions ~~
+The main function in this package is occupancyPattern. See its help for more information.
 }
 \author{
 David Gilinson
 dgilinson@reefpointgroup.com
 }
 \references{
-~~ Literature or other references for background information ~~
+Concept based on software written by MW Isken.
+See simular work at http://www.hselab.org/tags/hillmaker.
 }
 \keyword{ package }
-\seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-}
-\examples{
 
 }
