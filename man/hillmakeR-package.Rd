@@ -27,5 +27,3 @@ Concept based on software written by MW Isken.
 See simular work at http://www.hselab.org/tags/hillmaker.
 }
 \keyword{ package }
-
-}
