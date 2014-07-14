@@ -2,7 +2,7 @@
 \alias{occupancyPattern}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+occupancyPattern
 }
 \description{
 Calculates the number of items between time stamps using an efficient algorithm.
@@ -32,8 +32,6 @@ if true, then the last then items are treated as if they depart at the end of th
 }
 }
 
-
-}
 \details{
 fillup should be used when there are more than 0 items in the system, or the initial conditions of the system are unknown. For example a value of 0.95 indicates a 95\% chance that any items that were in the system at time 0 have departed and will not be included in the occupancy count.
 
