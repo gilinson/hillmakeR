@@ -1,12 +1,11 @@
 Package: hillmakeR
 Type: Package
-Title: Performs arrival, departure and occupancy analysis
+Title: Perform occupancy analysis
 Version: 0.2
-Date: 2013-06-06
+Date: 2014-07-14
 Author: David Gilinson
 Maintainer: David Gilinson <dgilinson@reefpointgroup.com>
-Enhances: plyr
-Description: Generate arrival, departure and occupancy patterns by hour and day of week using encounter-level data
+Description: Generate occupancy patterns based on arrival and departure timestamps
 License: MIT
 LazyLoad: true
 LazyData: true

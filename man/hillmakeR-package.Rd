@@ -16,7 +16,7 @@ Version: \tab 0.2 \cr
 Date: \tab 2014-07-014\cr
 License: \tab MIT \cr
 }
-The main function in this package is occupancyPattern. See its help for more information.
+The main function in this package is occupancy. See its help for more information.
 }
 \author{
 David Gilinson

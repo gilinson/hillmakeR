@@ -6,7 +6,7 @@ getdfAllowedUnits <- function(){
   return(returnFrame)
 }
 
-occupancyPattern <- function(startTimes, stopTimes, resolution = "min", initial = NULL, fillup = NULL, countlast = TRUE){
+occupancy <- function(startTimes, stopTimes, resolution = "min", initial = NULL, fillup = NULL, countlast = TRUE){
   #library.dynam("updateArray")
   #orginTime<-as.POSIXct('01/01/1970 00:00',format ="%m/%d/%Y %H:%M", tz = "GMT")
   
@@ -55,15 +55,15 @@ if(!is.null(fillup) & !is.null(initial))
     countlastpassed <- 1
   }
 
-  census<-.C("updateArray", size = as.integer(totalMin), starts = as.double(startMin), stops = as.double(stopMin), returnX = as.double(rep(0,max(stopMin) + 1)), countlast = as.integer(countlastpassed))$returnX
+  counts<-.C("updateArray", size = as.integer(totalMin), starts = as.double(startMin), stops = as.double(stopMin), returnX = as.double(rep(0,max(stopMin) + 1)), countlast = as.integer(countlastpassed))$returnX
   
-  timeSequence <- seq(from = trunc(earliestTime, units = resolution), to = trunc(latestTime,units = resolution), by = resolution)
-  returnFrame <- as.data.frame(timeSequence)
-  returnFrame <- cbind(returnFrame, census)
+  times <- seq(from = trunc(earliestTime, units = resolution), to = trunc(latestTime,units = resolution), by = resolution)
+  returnFrame <- as.data.frame(times)
+  returnFrame <- cbind(returnFrame, counts)
   
   #add initial count if specified
   if(!is.null(initial))
-    returnFrame$census <- returnFrame$census + initial
+    returnFrame$counts <- returnFrame$counts + initial
 
   #returnFrame$hour <- as.POSIXlt(returnFrame$dateHourList)$hour
   if(!(is.null(fillup))){
