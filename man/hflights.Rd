@@ -1,6 +1,5 @@
 \name{hflights}
 \alias{hflights}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Houston flights data
 }

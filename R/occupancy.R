@@ -12,11 +12,11 @@ occupancy <- function(startTimes, stopTimes, resolution = "min", initial = NULL,
   
  # Check in input is in correct format
   if(!identical(class(startTimes), c("POSIXct","POSIXt")))
-    stop(paste("startTimes is class ", class(i),". Must be class POSIXct POSIXt.", sep = ""))
+    stop(paste("startTimes is class ", class(startTimes),". Must be class POSIXct POSIXt.", sep = ""))
   
 # Check in output is in correct format
   if(!identical(class(stopTimes), c("POSIXct","POSIXt")))
-    stop(paste("startTimes is class ", class(i),". Must be class POSIXct POSIXt.", sep = ""))
+    stop(paste("startTimes is class ", class(stopTimes),". Must be class POSIXct POSIXt.", sep = ""))
 
 # Check if both initial and fillup are specified
 if(!is.null(fillup) & !is.null(initial))
