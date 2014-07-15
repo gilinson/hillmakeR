@@ -8,7 +8,7 @@ occupancy
 Calculates the number of items between time stamps using an efficient algorithm.
 }
 \usage{
-occupancy(startTimes, stopTimes, resolution = "min", fillup = NULL, countlast = TRUE)
+occupancy(startTimes, stopTimes, resolution = "min", initial = NULL, fillup = NULL, countlast = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -93,7 +93,7 @@ for (i in levels(Carrier)){
 # example of using initial values instead of fillup option with several types of items
 
 # make a dummy lookup table
-initial.lookup <- data.frame(key = levels(hflights$Carrier), 
+initial.lookup <- data.frame(key = levels(Carrier), 
                             value = c(380, 164, 131, 74, 114, 161, 334, 106, 127, 498, 485, 158,  68, 100, 60))
 
 
