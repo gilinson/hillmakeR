@@ -1,4 +1,2 @@
 useDynLib("hillmakeR")
-#import(plyr)
-#import(hflights)
-export(occupancyPattern)
+export(occupancy)
