@@ -21,7 +21,7 @@ a vector of POSIXct objects representing the time that an item departed
 }
 
   \item{resolution}{
-size of buckets to calculte occupancy within. May be "sec" "min" "hour" or "day"
+size of buckets to calculate occupancy within. May be "sec" "min" "hour" or "day"
 }
 
   \item{fillup}{
@@ -40,7 +40,7 @@ if true, then the last then items are treated as if they depart at the end of th
 \details{
 fillup should be used when the initial conditions of the system are unknown. For example a value of 0.95 indicates a 95\% chance that any items that were in the system at time 0 have departed and will not be included in the occupancy count.
 
-countlast determines how the stopTimes timestamps are treated. For example if an item has a startTime of 07/07/2014 and the endTime of 07/07/2014 with resulution = "day", then the item will be counted as in the system on 07/07/2014 with countlast = TRUE, but will not be counted as in the system with countlast = FALSE
+countlast determines how the stopTimes timestamps are treated. For example if an item has a startTime of 07/07/2014 and the endTime of 07/07/2014 with resolution = "day", then the item will be counted as in the system on 07/07/2014 with countlast = TRUE, but will not be counted as in the system with countlast = FALSE
 
 }
 \value{
@@ -51,7 +51,7 @@ A data.frame with two coloumns
 }
 \references{
 Concept based on software written by MW Isken.
-See simular work at http://www.hselab.org/tags/hillmaker.
+See similar work at http://www.hselab.org/tags/hillmaker.
 }
 
 \note{
@@ -90,7 +90,7 @@ for (i in levels(Carrier)){
   lines(subset(byHourAndCarrier, Carrier == i)$mean, col = sample(colours(), 1), type = "o" )
 }
 
-# example of using initial values instead of fillup option with serveral types of items
+# example of using initial values instead of fillup option with several types of items
 
 # make a dummy lookup table
 initial.lookup <- data.frame(key = levels(hflights$Carrier), 
