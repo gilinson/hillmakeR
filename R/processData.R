@@ -6,7 +6,7 @@ getdfAllowedUnits <- function(){
   return(returnFrame)
 }
 
-occupancyPattern.processdata <- function(startTimes, stopTimes, resolution = "min", fillup = NULL, countlast = TRUE){
+occupancyPattern <- function(startTimes, stopTimes, resolution = "min", initial = NULL, fillup = NULL, countlast = TRUE){
   #library.dynam("updateArray")
   #orginTime<-as.POSIXct('01/01/1970 00:00',format ="%m/%d/%Y %H:%M", tz = "GMT")
   
@@ -17,7 +17,11 @@ occupancyPattern.processdata <- function(startTimes, stopTimes, resolution = "mi
 # Check in output is in correct format
   if(!identical(class(stopTimes), c("POSIXct","POSIXt")))
     stop(paste("startTimes is class ", class(i),". Must be class POSIXct POSIXt.", sep = ""))
-  
+
+# Check if both initial and fillup are specified
+if(!is.null(fillup) & !is.null(initial))
+  stop("It does not make sense to det both initial and fillup parameters.")
+
   dfAllowedUnits <- getdfAllowedUnits()
   # Check if resolution is an allowed unit
     if (!(resolution %in% dfAllowedUnits$unitname)) {
@@ -57,18 +61,19 @@ occupancyPattern.processdata <- function(startTimes, stopTimes, resolution = "mi
   returnFrame <- as.data.frame(timeSequence)
   returnFrame <- cbind(returnFrame, census)
   
+  #add initial count if specified
+  if(!is.null(initial))
+    returnFrame$census <- returnFrame$census + initial
+
   #returnFrame$hour <- as.POSIXlt(returnFrame$dateHourList)$hour
   if(!(is.null(fillup))){
     # recalculate LOS (w/o removed records)
     LOS <- as.numeric(stopTimes - startTimes, units = paste(resolution, "s", sep = ""))
-    timetoremove = quantile(LOS, fillup)
+    timetoremove <- quantile(LOS, fillup)
+    timetoremove <- ceiling(timetoremove) # round if there is a decimal
     warning(paste(timetoremove, " time steps removed based on fillup quantile"))
     returnFrame <- returnFrame[(timetoremove + 1):nrow(returnFrame),]
   }
   
   return(returnFrame)
-}
-
-occupancyPattern <- function (x, ...) {
-  UseMethod("occupancyPattern", x)
 }
